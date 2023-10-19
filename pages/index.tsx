@@ -4,8 +4,7 @@ import { Layout } from '@/components';
 const HomePage = () => {
 
   const theme = useTheme();
-
-  console.log(theme)
+  
   return (
     <>
       <Layout>

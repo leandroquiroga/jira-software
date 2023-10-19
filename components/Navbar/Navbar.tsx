@@ -1,6 +1,7 @@
 import React from "react"
 import Image from "next/image";
-import { AppBar, Box, Toolbar, Typography, useTheme } from "@mui/material";
+import { AppBar, Box, IconButton, Toolbar, Typography, useTheme } from "@mui/material";
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import { ControlSwitch } from "@/components";
 
 export const Navbar: React.FC = () => {
@@ -10,7 +11,10 @@ export const Navbar: React.FC = () => {
   return ( 
     <AppBar position="static">
       <Toolbar sx={{display: "flex", justifyContent: 'space-between'}}>
-        <Box sx={{ display: 'inherit', direction: 'row'}}>
+        <Box sx={{ display: 'inherit', direction: 'row' }}>
+          <IconButton size="large" edge="start" >
+            <MenuOutlinedIcon />
+          </IconButton>
           <Image src="/jira.ico" alt="icon-jira" width={40} height={40} />
 
           <Typography
