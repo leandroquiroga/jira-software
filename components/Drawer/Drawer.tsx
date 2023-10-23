@@ -1,23 +1,36 @@
-/* eslint-disable react/jsx-key */
 /* eslint-disable react/no-children-prop */
 import React, { useState } from 'react'
 import Drawer from "@mui/material/Drawer";
-import { Box, List, ListItem, ListItemIcon, Typography } from '@mui/material';
+import { Box, List, Typography } from '@mui/material';
 import { AutoAwesomeMotionOutlined, BackupTableOutlined, ReceiptLongOutlined, RocketLaunchOutlined, SailingOutlined, SettingsOutlined } from '@mui/icons-material';
 import { ListItemComponents } from '..';
 
 const KEYINIT = 0;
-const arrayTitleIcon = ["Backlog", "Board", "Reports", "Release", "Settings"];
 
 export const DrawerComponent = () => {
 
-  const arrayIcon = [
-    <AutoAwesomeMotionOutlined />,
-    <BackupTableOutlined />,
-    <ReceiptLongOutlined />,
-    <RocketLaunchOutlined />,
-    <SettingsOutlined />,
-  ];
+    const arrayIcon = [
+      {
+        children: <AutoAwesomeMotionOutlined />,
+        title: "Backlog",
+      },
+      {
+        children: <BackupTableOutlined />,
+        title: "Board",
+      },
+      {
+        children: <ReceiptLongOutlined />,
+        title: "Reports",
+      },
+      {
+        children: <RocketLaunchOutlined />,
+        title: "Release",
+      },
+      {
+        children: <SettingsOutlined />,
+        title: "Settings",
+      },
+    ];
 
   const [openMenu, setOpenMenu] = useState<boolean>(true);
 
@@ -29,47 +42,21 @@ export const DrawerComponent = () => {
       variant="temporary"
       anchor="left"
       open={openMenu}
-      onClose={handleShowMenu}>
-      <Box sx={{ padding: "5px 10px" }}>
-        <Typography variant="h5"> Menu Bar </Typography>
+      onClose={handleShowMenu}
+    >
+      <Box sx={{width: 250}}>
+        <Box sx={{ padding: "5px 10px" }}>
+          <Typography variant="h5"> Menu Bar </Typography>
+        </Box>
+        <List sx={{display: 'flex', flexDirection: 'column'}}>
+          {arrayIcon.map(({ children, title }) => (
+            <ListItemComponents
+              key={KEYINIT + 1}
+              children={children}
+              title={title} />
+          ))}
+        </List>
       </Box>
-      {/* TODO: Mejorar este choclazo */}
-      <List>
-        {
-          arrayIcon.map((value) => (
-            <ListItemComponents key={KEYINIT + 1} children={value} />
-          ))
-        }
-        {
-          arrayTitleIcon.map((value) => (
-           <Typography
-            key={value}
-            variant='subtitle2'
-            >
-            {value}
-          </Typography>
-      ))}
-      </List>
     </Drawer>
   );
 };
-
-
-        // <ListItemIcon>
-        //   <AutoAwesomeMotionOutlined />
-        // </ListItemIcon>
-        // <ListItemIcon>
-        //   <BackupTableOutlined />
-        // </ListItemIcon>
-        // <ListItemIcon>
-        //   <ReceiptLongOutlined />
-        // </ListItemIcon>
-        // <ListItemIcon>
-        //   <SettingsOutlined />
-        // </ListItemIcon>
-        // <ListItemIcon>
-        //   <SailingOutlined />
-        // </ListItemIcon>
-        // <ListItemIcon>
-        //   <RocketLaunchOutlined />
-        // </ListItemIcon>

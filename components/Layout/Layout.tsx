@@ -2,11 +2,7 @@ import React from "react";
 import Head from "next/head"
 import { Box } from "@mui/material"
 import { DrawerComponent, Navbar } from "..";
-
-export interface LayoutProps {
-  title?: string;
-  children: JSX.Element | JSX.Element[]
-}
+import { LayoutProps } from "@/interfaces";
 
 export const Layout: React.FC<LayoutProps> = ({title = 'Jira Software', children}) => {
   return (

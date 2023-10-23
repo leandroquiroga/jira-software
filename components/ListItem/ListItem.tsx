@@ -1,18 +1,18 @@
 import React from 'react'
-import { ListItemIcon, Typography } from '@mui/material';
-import { ListItemTitle } from '..';
+import { Divider, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import {ListItemProps} from '@/interfaces'
 
-interface ListItemProps {
-  children: JSX.Element | JSX.Element[];
-};
 
-const KEYINIT = 0;
-
-export const ListItemComponents = ({  children }: ListItemProps) => {
-  console.log(children)
+export const ListItemComponents: React.FC<ListItemProps> = ({ children, title }) => {
   return (
-    <ListItemIcon>
-      {children}
-    </ListItemIcon>
+    <>
+      <ListItem button>
+        <ListItemIcon sx={{ cursor: "pointer" }}>
+          {children}
+          <ListItemText sx={{ ml: 1 }} primary={title} />
+        </ListItemIcon>
+      </ListItem>
+      <Divider />
+    </>
   );
 };

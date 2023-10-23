@@ -1,6 +1,6 @@
 import { createContext, useMemo, useState } from 'react';
 import type { AppProps } from 'next/app';
-import { CssBaseline, PaletteMode, ThemeProvider, createTheme } from '@mui/material';
+import { CssBaseline, PaletteMode, ThemeProvider } from '@mui/material';
 
 import { darkTheme, ligthTheme } from '@/themes';
 
