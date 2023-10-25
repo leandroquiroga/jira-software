@@ -23,15 +23,22 @@ export const darkTheme = createTheme({
     success: {
       main: "#8fbe00",
     },
-
   },
 
   components: {
     MuiSwitch: {
       defaultProps: {},
       styleOverrides: {
-        colorPrimary: '#FFF'
-      }
-    }
-  }
+        colorPrimary: "#FFF",
+      },
+    },
+    MuiIconButton: {
+      defaultProps: {},
+      styleOverrides: {
+        root: {
+          color: "#FFF",
+        },
+      },
+    },
+  },
 });

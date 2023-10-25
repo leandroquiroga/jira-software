@@ -1,12 +1,8 @@
 import React from "react";
 import Head from "next/head"
 import { Box } from "@mui/material"
-import { Navbar } from "..";
-
-export interface LayoutProps {
-  title?: string;
-  children: JSX.Element | JSX.Element[]
-}
+import { DrawerComponent, Navbar } from "..";
+import { LayoutProps } from "@/interfaces";
 
 export const Layout: React.FC<LayoutProps> = ({title = 'Jira Software', children}) => {
   return (
@@ -19,7 +15,7 @@ export const Layout: React.FC<LayoutProps> = ({title = 'Jira Software', children
       </Head>
 
       <Navbar/>
-      {/* Sidebar */}
+      <DrawerComponent />
 
       <Box sx={{ padding: "10px 20px" }}>{children}</Box>
     </Box>
