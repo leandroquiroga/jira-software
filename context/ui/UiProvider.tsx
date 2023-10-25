@@ -7,12 +7,21 @@ const UI_INITAL_STATE: UIState = {
 };
 
 export const UIProvider: React.FC<UIProviderProps> = ({ children }) => {
-  const [state, dispath] = useReducer(uiReducer, UI_INITAL_STATE);
+  const [state, dispatch] = useReducer(uiReducer, UI_INITAL_STATE);
 
+  const handleSideOpenMenu = () => {
+    dispatch({type: 'UI - Open Sidebar'});
+  }
+
+  const handleSideCloseMenu = () => {
+    dispatch({type: 'UI - Close Sidebar'})
+  }
   return (
     <UiContext.Provider
       value={{
-        sibaMenubar: false,
+        ...state,
+        handleSideOpenMenu,
+        handleSideCloseMenu,
       }}>
       {children}
     </UiContext.Provider>

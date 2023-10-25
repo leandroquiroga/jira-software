@@ -1,13 +1,16 @@
 /* eslint-disable react/no-children-prop */
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Drawer from "@mui/material/Drawer";
 import { Box, List, Typography } from '@mui/material';
-import { AutoAwesomeMotionOutlined, BackupTableOutlined, ReceiptLongOutlined, RocketLaunchOutlined, SailingOutlined, SettingsOutlined } from '@mui/icons-material';
+import { AutoAwesomeMotionOutlined, BackupTableOutlined, ReceiptLongOutlined, RocketLaunchOutlined, SettingsOutlined } from '@mui/icons-material';
 import { ListItemComponents } from '..';
+import { UiContext } from '@/context';
 
 const KEYINIT = 0;
 
 export const DrawerComponent = () => {
+
+  const { sideMenuOpen, handleSideCloseMenu } = useContext(UiContext);
 
     const arrayIcon = [
       {
@@ -31,29 +34,25 @@ export const DrawerComponent = () => {
         title: "Settings",
       },
     ];
-
-  const [openMenu, setOpenMenu] = useState<boolean>(true);
-
-  const handleShowMenu = () => {
-    setOpenMenu(!openMenu)
-  }
+  
+  
   return (
     <Drawer
       variant="temporary"
       anchor="left"
-      open={openMenu}
-      onClose={handleShowMenu}
-    >
-      <Box sx={{width: 250}}>
+      open={sideMenuOpen}
+      onClose={handleSideCloseMenu}>
+      <Box sx={{ width: 250 }}>
         <Box sx={{ padding: "5px 10px" }}>
           <Typography variant="h5"> Menu Bar </Typography>
         </Box>
-        <List sx={{display: 'flex', flexDirection: 'column'}}>
+        <List sx={{ display: "flex", flexDirection: "column" }}>
           {arrayIcon.map(({ children, title }) => (
             <ListItemComponents
               key={KEYINIT + 1}
               children={children}
-              title={title} />
+              title={title}
+            />
           ))}
         </List>
       </Box>

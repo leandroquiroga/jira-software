@@ -1,7 +1,9 @@
 import { createContext } from 'react';
 
 export interface ContextProps {
-  sibaMenubar: boolean;
+  sideMenuOpen: boolean;
+  handleSideOpenMenu: () => void;
+  handleSideCloseMenu: () => void;
 };
 
 export const UiContext = createContext({} as ContextProps);
