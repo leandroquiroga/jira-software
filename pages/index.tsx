@@ -1,4 +1,4 @@
-import { Typography, useTheme } from '@mui/material';
+import { Card, CardHeader, Grid, Typography, useTheme } from '@mui/material';
 import { Layout } from '@/components';
 
 const HomePage = () => {
@@ -8,13 +8,25 @@ const HomePage = () => {
   return (
     <>
       <Layout>
-        <Typography
-          variant="h3"
-          color={`${
-            theme.palette.mode === "dark" ? '#FBFBFE' : "#202020"
-          }`}>
-          Hola Mundo
-        </Typography>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={4}>
+            <Card sx={{ height: "calc(100vh - 100px)" }}>
+              <CardHeader title="Pendientes" />
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} sm={4}>
+            <Card sx={{ height: "calc(100vh - 100px)" }}>
+              <CardHeader title="En Progreso" />
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} sm={4}>
+            <Card sx={{ height: "calc(100vh - 100px)" }}>
+              <CardHeader title="Completadas" />
+            </Card>
+          </Grid>
+        </Grid>
       </Layout>
     </>
   );
