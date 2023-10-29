@@ -14,5 +14,22 @@ export interface LayoutProps {
 
 export interface ListItemProps {
   children: JSX.Element | JSX.Element[];
-  title: string
+  title: string;
 };
+
+export interface EntriesProviderProps {
+  entries?: [];
+  children: JSX.Element | JSX.Element[];
+}
+export interface EntryState {
+  entries: Entry[];
+}
+
+export interface Entry {
+  _id: string;
+  description: string;
+  createdAt: number;
+  status: EntryStatus;
+}
+
+export type EntryStatus = 'pending' | 'in-progress' | 'finished'

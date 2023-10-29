@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import { CssBaseline, PaletteMode, ThemeProvider } from '@mui/material';
 
 import { darkTheme, ligthTheme } from '@/themes';
-import { UIProvider } from '@/context/index';
+import { EntriesProvider, UIProvider } from '@/context/index';
 
 // Crea un contexto para el toogle del theme 
 export const ColorThemeContext = createContext({ toggleThemeMode: () => {} });
@@ -19,13 +19,15 @@ export default function App({ Component, pageProps }: AppProps) {
   }), []); 
 
   return (
-    <UIProvider>
-      <ColorThemeContext.Provider value={selectTheme}>
-        <ThemeProvider theme={theme === 'dark' ? darkTheme : ligthTheme}>
-          <CssBaseline />
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </ColorThemeContext.Provider>
-    </UIProvider>
+    <EntriesProvider>
+      <UIProvider>
+        <ColorThemeContext.Provider value={selectTheme}>
+          <ThemeProvider theme={theme === 'dark' ? darkTheme : ligthTheme}>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </ColorThemeContext.Provider>
+      </UIProvider>
+    </EntriesProvider>
   );
 }
