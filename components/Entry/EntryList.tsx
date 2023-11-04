@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { useContext, useMemo } from 'react'
 import { List, Paper, Typography, useTheme } from "@mui/material";
+import { EntryCard } from '../index';
+import { EntryStatus } from '@/interfaces';
+import { EntriesContext } from '@/context';
 
-export const EntryList = () => {
+interface EntryListProps {
+  status: EntryStatus
+}
+
+export const EntryList: React.FC<EntryListProps> = ({status}) => {
+  
+  const { entries } = useContext(EntriesContext);
+
+  // Se memoriza el valor cada vez que las entradas cambien.
+  const entryStatus = useMemo(
+    () => entries.filter((entry) => entry.status === status),
+    [entries]
+  );
   const theme = useTheme();
-
   return (
     <div>
       <Paper
@@ -30,26 +44,16 @@ export const EntryList = () => {
             }`,
             borderRadius: "4px",
           },
+          padding: 1 
         }}>
         {/* Todo va a cambiar dependiendo si estamos haciendo un drag and drop */}
-        <List sx={{ opacity: 1 }}>
-          <Typography variant="h4">Hola Mundo</Typography>
-          <Typography variant="h4">Hola Mundo</Typography>
-          <Typography variant="h4">Hola Mundo</Typography>
-          <Typography variant="h4">Hola Mundo</Typography>
-          <Typography variant="h4">Hola Mundo</Typography>
-          <Typography variant="h4">Hola Mundo</Typography>
-          <Typography variant="h4">Hola Mundo</Typography>
-          <Typography variant="h4">Hola Mundo</Typography>
-          <Typography variant="h4">Hola Mundo</Typography>
-          <Typography variant="h4">Hola Mundo</Typography>
-          <Typography variant="h4">Hola Mundo</Typography>
-          <Typography variant="h4">Hola Mundo</Typography>
-          <Typography variant="h4">Hola Mundo</Typography>
-          <Typography variant="h4">Hola Mundo</Typography>
-          <Typography variant="h4">Hola Mundo</Typography>
-          <Typography variant="h4">Hola Mundo</Typography>
-          <Typography variant="h4">Hola Mundo</Typography>
+        <List sx={{ opacity: 1}}>
+          {
+            entryStatus.map((entry) => (
+              <EntryCard key={entry._id} entry={entry} />
+
+            ))  
+          }
         </List>
       </Paper>
     </div>

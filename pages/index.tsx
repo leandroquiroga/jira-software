@@ -13,20 +13,26 @@ const HomePage = () => {
             <Card sx={{ height: "calc(100vh - 100px)" }}>
               <CardHeader title="Pendientes" />
               <CardContent>
-                <EntryList />
+                <EntryList status="pending" />
               </CardContent>
             </Card>
           </Grid>
 
           <Grid item xs={12} sm={4}>
             <Card sx={{ height: "calc(100vh - 100px)" }}>
-              <CardHeader title="En Progreso" />
+              <CardHeader title="En progreso" />
+              <CardContent>
+                <EntryList status="in-progress" />
+              </CardContent>
             </Card>
           </Grid>
 
           <Grid item xs={12} sm={4}>
             <Card sx={{ height: "calc(100vh - 100px)" }}>
               <CardHeader title="Completadas" />
+              <CardContent>
+                <EntryList status="finished" />
+              </CardContent>
             </Card>
           </Grid>
         </Grid>
