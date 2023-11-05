@@ -1,9 +1,8 @@
-import { Card, CardContent, CardHeader, Grid, useTheme } from '@mui/material';
-import { EntryList, Layout } from '@/components';
+import { Button, Card, CardContent, CardHeader, Grid, IconButton, useTheme } from '@mui/material';
+import AddIcon from "@mui/icons-material/Add";
+import { ButtonModal, Entry, EntryList, Layout } from '@/components';
 
 const HomePage = () => {
-
-  const theme = useTheme();
   
   return (
     <>
@@ -13,6 +12,7 @@ const HomePage = () => {
             <Card sx={{ height: "calc(100vh - 100px)" }}>
               <CardHeader title="Pendientes" />
               <CardContent>
+                <Entry />
                 <EntryList status="pending" />
               </CardContent>
             </Card>
@@ -22,6 +22,7 @@ const HomePage = () => {
             <Card sx={{ height: "calc(100vh - 100px)" }}>
               <CardHeader title="En progreso" />
               <CardContent>
+                <Entry />
                 <EntryList status="in-progress" />
               </CardContent>
             </Card>
@@ -31,12 +32,14 @@ const HomePage = () => {
             <Card sx={{ height: "calc(100vh - 100px)" }}>
               <CardHeader title="Completadas" />
               <CardContent>
+                <Entry />
                 <EntryList status="finished" />
               </CardContent>
             </Card>
           </Grid>
         </Grid>
       </Layout>
+      <ButtonModal />
     </>
   );
 }

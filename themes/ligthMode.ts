@@ -1,5 +1,4 @@
 import { createTheme } from "@mui/material";
-import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 
 export const ligthTheme = createTheme({
   palette: {
@@ -24,6 +23,9 @@ export const ligthTheme = createTheme({
     success: {
       main: "#8fbe00",
     },
+    secondary: {
+      main: "#9a26a2",
+    },
   },
 
   components: {
@@ -37,7 +39,7 @@ export const ligthTheme = createTheme({
       defaultProps: {},
       styleOverrides: {
         root: {
-          color: '#FFF'
+          color: "#FFF",
         },
       },
     },
