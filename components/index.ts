@@ -7,3 +7,4 @@ export { EntryList } from "./Entry/EntryList";
 export { Layout } from "./Layout/Layout";
 export { ListItemComponents } from "./ListItem/ListItem";
 export { Navbar } from "./Navbar/Navbar";
+export { ModalEntry } from './Modal/Modal';

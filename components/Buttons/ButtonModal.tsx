@@ -1,8 +1,8 @@
-import React from 'react'
-import IconButton, { IconButtonProps, IconButtonOwnProps, IconButtonClasses} from '@mui/material/IconButton';
+import React, { useState } from 'react'
+import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import { purple } from '@mui/material/colors';
+import { ModalEntry } from '..';
 
 const ButtonStyle = styled(IconButton)({
   boxShadow: "none",
@@ -15,16 +15,29 @@ const ButtonStyle = styled(IconButton)({
   justifyContent: "center",
   alignContent: "center",
   "&:hover": {
-    backgroundColor: "#0069d9",
-    borderColor: "#0062cc",
+    backgroundColor: "rgba(130,110,255,.9)",
+    borderColor: "rgba(130,110,255,.9)",
     boxShadow: "none",
   },
 });
 
 export const ButtonModal = () => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const handleOpenModal = () => {
+    console.log('Modal Open')
+    setShowModal(!showModal);
+  }
+  
   return (
-    <ButtonStyle aria-label='add' size='medium'>
-      <AddIcon fontSize="inherit" />
-    </ButtonStyle>
+    <>
+      <ButtonStyle aria-label='add' size='medium' onClick={handleOpenModal}>
+        <AddIcon fontSize="inherit" />
+      </ButtonStyle>
+
+      {
+        (showModal) && <ModalEntry showModal={showModal} setShowModal={setShowModal} />
+      }
+    
+    </>
   );
 }
