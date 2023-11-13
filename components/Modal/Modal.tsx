@@ -1,4 +1,4 @@
-import React, { SetStateAction } from 'react'
+import React, { ChangeEvent, SetStateAction, useState } from 'react'
 import { Box, Button, Modal, TextField } from '@mui/material';
 import SaveIcon from "@mui/icons-material/Save";
 import CancelIcon from "@mui/icons-material/Cancel";
@@ -14,7 +14,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  maxWidth: '1240px' ,
+  maxWidth: '600px' ,
   width: '90%',
   display: 'flex',
   justifyContent: 'center',
@@ -29,8 +29,13 @@ const style = {
 };
 
 export const ModalEntry: React.FC<ModalEntryProps> = ({setShowModal, showModal}) => {
+  
+  const [inputValue, setInputValue] = useState<string>('');
+  const [touched, setTouched] = useState<boolean>(false)
   const handleClose = () => setShowModal(false);
 
+  const handleChangedInput = (event: ChangeEvent<HTMLInputElement>) => setInputValue(event.target.value)
+  
   return (
     <div>
       <Modal
@@ -45,16 +50,27 @@ export const ModalEntry: React.FC<ModalEntryProps> = ({setShowModal, showModal})
             focused
             multiline
             label="Nueva tarea"
+            value={inputValue}
+            onChange={handleChangedInput}
           />
 
           <Box
             sx={{
-              display: "inherit",
               justifyContent: "space-between",
               margin: "10px auto",
             }}>
-            <Button variant='outlined' endIcon={<CancelIcon />}>Cancelar</Button>
-            <Button variant='outlined' endIcon={<SaveIcon />}>Guardar</Button>
+            <Button
+              variant="outlined"
+              sx={{ margin: "0 30px" }}
+              endIcon={<CancelIcon />}>
+              Cancelar
+            </Button>
+            <Button
+              variant="outlined"
+              sx={{ margin: "0 30px" }}
+              endIcon={<SaveIcon />}>
+              Guardar
+            </Button>
           </Box>
         </Box>
       </Modal>
