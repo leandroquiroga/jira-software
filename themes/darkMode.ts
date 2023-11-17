@@ -23,6 +23,9 @@ export const darkTheme = createTheme({
     success: {
       main: "#8fbe00",
     },
+    secondary: {
+      main: "#71f9ff",
+    },
   },
 
   components: {

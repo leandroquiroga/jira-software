@@ -1,9 +1,8 @@
-import { Card, CardContent, CardHeader, Grid, useTheme } from '@mui/material';
-import { EntryList, Layout } from '@/components';
+import React from 'react';
+import { Card, CardContent, CardHeader, Grid } from '@mui/material';
+import { ButtonModal, EntryList, Layout } from '@/components';
 
 const HomePage = () => {
-
-  const theme = useTheme();
   
   return (
     <>
@@ -37,6 +36,7 @@ const HomePage = () => {
           </Grid>
         </Grid>
       </Layout>
+      <ButtonModal />
     </>
   );
 }

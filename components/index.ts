@@ -1,7 +1,10 @@
+export { ButtonModal } from "./Buttons/ButtonModal";
 export { ControlSwitch } from "./Switch/Switch";
 export { DrawerComponent } from "./Drawer/Drawer";
+export { Entry } from "./Entry/Entry";
 export { EntryCard } from "./Entry/EntryCard";
 export { EntryList } from "./Entry/EntryList";
 export { Layout } from "./Layout/Layout";
 export { ListItemComponents } from "./ListItem/ListItem";
 export { Navbar } from "./Navbar/Navbar";
+export { ModalEntry } from './Modal/Modal';
