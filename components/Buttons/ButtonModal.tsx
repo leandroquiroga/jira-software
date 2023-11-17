@@ -24,7 +24,6 @@ const ButtonStyle = styled(IconButton)({
 export const ButtonModal = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const handleOpenModal = () => {
-    console.log('Modal Open')
     setShowModal(!showModal);
   }
   

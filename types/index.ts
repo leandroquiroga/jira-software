@@ -1,3 +1,4 @@
+import { Entry } from "@/interfaces"
 
 
 export type UIActionType = 
@@ -6,4 +7,4 @@ export type UIActionType =
 
 
 export type EntriesActionType = 
-  | {type: 'Entries - Initial'}
+  | {type: '[Entry] Add-Entry', payload: Entry}
