@@ -1,5 +1,6 @@
 export interface UIState {
   sideMenuOpen: boolean;
+  showModal: boolean;
 }
 
 export interface UIProviderProps {

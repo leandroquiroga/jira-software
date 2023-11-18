@@ -1,15 +1,10 @@
-import React, { ChangeEvent, SetStateAction, useContext, useState } from 'react'
+import React, { ChangeEvent, useContext, useState } from 'react'
 
 import { Box, Button, Modal, TextField } from '@mui/material';
 import SaveIcon from "@mui/icons-material/Save";
 import CancelIcon from "@mui/icons-material/Cancel";
 
-import { EntriesContext } from '@/context';
-
-interface ModalEntryProps {
-  showModal: boolean;
-  setShowModal: React.Dispatch<SetStateAction<boolean>>;
-}
+import { EntriesContext, UiContext } from '@/context';
 
 
 const style = {
@@ -31,23 +26,23 @@ const style = {
   p: 2,
 };
 
-export const ModalEntry: React.FC<ModalEntryProps> = ({setShowModal, showModal}) => {
+export const ModalEntry = () => {
   
   const { saveNewEntry } = useContext(EntriesContext);
+  const { showModal, handleCloseModal } = useContext(UiContext);
   const [inputValue, setInputValue] = useState<string>('');
   const [touched, setTouched] = useState<boolean>(false);
-  const handleClose = () => setShowModal(false);
   
 
   const handleChangedInput = (event: ChangeEvent<HTMLInputElement>) => setInputValue(event.target.value)
+  
   const onSaveTask = () => {
     if (inputValue.length === 0) return;
-    console.log({inputValue})
 
-    saveNewEntry(inputValue)
-    setShowModal(false);
+    saveNewEntry(inputValue);
     setTouched(false);
-    setInputValue('')
+    setInputValue('');
+    handleCloseModal()
   }
   
   const handleInputError = inputValue.length <= 0 && touched;
@@ -58,7 +53,7 @@ export const ModalEntry: React.FC<ModalEntryProps> = ({setShowModal, showModal})
     <div>
       <Modal
         open={showModal}
-        onClose={handleClose}
+        onClose={handleCloseModal}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description">
         <Box sx={style}>
@@ -84,7 +79,7 @@ export const ModalEntry: React.FC<ModalEntryProps> = ({setShowModal, showModal})
               variant="outlined"
               sx={{ margin: "0 30px" }}
               endIcon={<CancelIcon />}
-              onClick={() => setShowModal(false)}>
+              onClick={() => handleCloseModal()}>
               Cancelar
             </Button>
             <Button

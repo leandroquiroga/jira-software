@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { ModalEntry } from '..';
+import { UiContext } from '@/context';
 
 const ButtonStyle = styled(IconButton)({
   boxShadow: "none",
@@ -22,10 +23,8 @@ const ButtonStyle = styled(IconButton)({
 });
 
 export const ButtonModal = () => {
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const handleOpenModal = () => {
-    setShowModal(!showModal);
-  }
+
+  const { handleOpenModal, showModal } = useContext(UiContext);
   
   return (
     <>
@@ -34,7 +33,7 @@ export const ButtonModal = () => {
       </ButtonStyle>
 
       {
-        (showModal) && <ModalEntry showModal={showModal} setShowModal={setShowModal} />
+        (showModal) && <ModalEntry/>
       }
     
     </>
