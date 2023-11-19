@@ -12,6 +12,20 @@ export const entriesReducer = (
         ...state,
         entries: [...state.entries, action.payload]
       };
+    
+    case '[Entry] Updated-Entry':
+      return {
+        ...state, 
+        entries: state.entries.map(entry => {
+          if (entry._id === action.payload._id) {
+            entry.status = action.payload.status;
+            entry.description = action.payload.description;
+            entry.createdAt = action.payload.createdAt
+          };
+
+          return entry
+        })
+      }
 
     default:
       return state;

@@ -34,20 +34,24 @@ export const EntriesProvider: React.FC<EntriesProviderProps> = ({ children }) =>
   const saveNewEntry = (description: string) => {
     
     const newEntry: Entry = {
-        _id: uuidV4(),
-        createdAt: Date.now(),
-        description,
-        status: "pending",
+      _id: uuidV4(),
+      createdAt: Date.now(),
+      description,
+      status: "pending",
     }
 
-    dispatch({type: '[Entry] Add-Entry', payload: newEntry});
-  }
+    dispatch({ type: '[Entry] Add-Entry', payload: newEntry });
+  };
+
+  const updateEntry = (entry: Entry) => dispatch({ type: '[Entry] Updated-Entry', payload: entry });
+
 
   return (
     <EntriesContext.Provider
       value={{
         ...state,
         saveNewEntry,
+        updateEntry,
       }}>
       {children}
     </EntriesContext.Provider>

@@ -15,18 +15,31 @@ export const uiReducer = (state: UIState, action: UIActionType): UIState => {
         ...state,
         sideMenuOpen: false,
       };
-    
-    case '[UI] - Open Modal': 
-      return {
-        ...state,
-        showModal: true
-      }
 
-    case '[UI] - Close Modal':
+    case "[UI] - Open Modal":
       return {
         ...state,
-        showModal: false
+        showModal: true,
+      };
+
+    case "[UI] - Close Modal":
+      return {
+        ...state,
+        showModal: false,
+      };
+
+    case "[UI] - Start Dragging":
+      return {
+        ...state,
+        isDragging: true,
+      };
+
+    case "[UI] - End Dragging":
+      return {
+        ...state,
+        isDragging: false,
       }
+    
     default:
       return state;
   };

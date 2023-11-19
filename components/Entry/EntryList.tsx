@@ -1,25 +1,47 @@
 import React, { useContext, useMemo } from 'react'
-import { List, Paper, Typography, useTheme } from "@mui/material";
+import { List, Paper, useTheme } from "@mui/material";
+import { EntriesContext, UiContext } from '@/context';
+import { Entry, EntryStatus } from '@/interfaces';
 import { EntryCard } from '../index';
-import { EntryStatus } from '@/interfaces';
-import { EntriesContext } from '@/context';
+
+import styles from './EntryList.module.css';
 
 interface EntryListProps {
   status: EntryStatus
 }
 
-export const EntryList: React.FC<EntryListProps> = ({status}) => {
+export const EntryList: React.FC<EntryListProps> = ({ status }) => {
   
-  const { entries } = useContext(EntriesContext);
+  const theme = useTheme();
+  const { entries, updateEntry } = useContext(EntriesContext);
+  const { isDragging, handleCloseDragging } = useContext(UiContext);
 
   // Se memoriza el valor cada vez que las entradas cambien.
   const entryStatus = useMemo(
     () => entries.filter((entry) => entry.status === status),
-    [entries]
+    [entries, status]
   );
-  const theme = useTheme();
+  
+  const allowDrop = (event: React.DragEvent<HTMLDivElement>) => event.preventDefault(); 
+  const onDropEntry = (event: React.DragEvent<HTMLDivElement>) => {
+    const idEntry = event.dataTransfer.getData("uuid");
+
+    const entry = entries.find(entry => entry._id === idEntry)!;
+    
+    const entryUpdated: Entry = { 
+      ...entry,
+      createdAt: Date.now(),
+      status,
+    }
+    updateEntry(entryUpdated);
+    handleCloseDragging()
+  };
+
   return (
-    <div>
+    <div
+      onDrop={onDropEntry}
+      onDragOver={allowDrop}
+      className={isDragging ? styles.entry_list_dragging : ""}>
       <Paper
         sx={{
           height: "calc(100vh - 250px)",
@@ -44,16 +66,12 @@ export const EntryList: React.FC<EntryListProps> = ({status}) => {
             }`,
             borderRadius: "4px",
           },
-          padding: 1 
+          padding: 1,
         }}>
-        {/* Todo va a cambiar dependiendo si estamos haciendo un drag and drop */}
-        <List sx={{ opacity: 1}}>
-          {
-            entryStatus.map((entry) => (
-              <EntryCard key={entry._id} entry={entry} />
-
-            ))  
-          }
+        <List sx={{ opacity: isDragging ? 0.2 : 1, transition: "all .3s" }}>
+          {entryStatus.map((entry) => (
+            <EntryCard key={entry._id} entry={entry} />
+          ))}
         </List>
       </Paper>
     </div>
