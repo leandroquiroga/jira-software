@@ -30,6 +30,13 @@ Para acceder a nuestra bases de datos desde MongoDB Compass debemos ingresar el 
 MongoDB - Modo desarrollo: mongodb://localhost:27017/openTask
 ```
 
+## Configuracion del enviroment
+
+* Renombar el archivo __.env.example__ a __.env__
+* Debemos sacar el numeral # 
+* Colocarle el valor que corresponda a las variables de entorno.
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
