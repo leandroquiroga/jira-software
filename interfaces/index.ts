@@ -1,5 +1,7 @@
 export interface UIState {
   sideMenuOpen: boolean;
+  showModal: boolean;
+  isDragging: boolean;
 }
 
 export interface UIProviderProps {
