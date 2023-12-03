@@ -43,6 +43,9 @@ export const connectDB = async () => {
 
 export const disconnetDB = async () => {
 
+  //Si es ambiente de desarrollo no debemos desconectar la base de datos.
+  if (process.env.NODE_ENV === 'development') return;
+
   // Revisamos si ya estamos desconectado
   if (mongoConnection.isConneted === 0) return;
 

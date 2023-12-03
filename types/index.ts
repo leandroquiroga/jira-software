@@ -10,6 +10,7 @@ export type UIActionType =
   | { type: "[UI] - End Dragging" };
 
 
-export type EntriesActionType = 
-  | {type: '[Entry] Add-Entry', payload: Entry}
-  | {type: '[Entry] Updated-Entry', payload: Entry}
+export type EntriesActionType =
+  | { type: "[Entry] Add-Entry"; payload: Entry }
+  | { type: "[Entry] Updated-Entry"; payload: Entry }
+  | { type: "[Entry] Initial-Load"; payload: Entry[] };

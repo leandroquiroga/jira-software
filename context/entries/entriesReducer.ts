@@ -26,6 +26,13 @@ export const entriesReducer = (
           return entry
         })
       }
+    
+    
+    case '[Entry] Initial-Load': 
+      return {
+        ...state, 
+        entries: [...action.payload]
+      }
 
     default:
       return state;

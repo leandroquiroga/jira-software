@@ -1,0 +1,1 @@
+export { entriesApi }from "./entriesAPI";

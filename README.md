@@ -1,4 +1,4 @@
-# OpenTaks - Typescript, Next.js, MateialUI, MongoDB ,Docker
+# OpenTaks - Typescript, Next.js, MateialUI, MongoDB , Docker
 
 Este es un proyecto con fines educativos en la que podemos agregar nuestras tareas diarias, marcarla como pendiente, en progreso y como finalizadas. Ademas se puede utilizar Dark Mode permitido por [Material-UI](https://mui.com/material-ui/customization/dark-mode/). Esta aplicacion nos permite llevar un control de nuestras tareas cotidianas. 
 
@@ -36,6 +36,14 @@ MongoDB - Modo desarrollo: mongodb://localhost:27017/openTask
 * Debemos sacar el numeral # 
 * Colocarle el valor que corresponda a las variables de entorno.
 
+
+### Informacion de pruebas en la bases de datos 
+
+Llamar 
+```bash
+
+  http://localhost:3000/api/seeds
+```
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
