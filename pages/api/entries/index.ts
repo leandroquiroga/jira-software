@@ -19,11 +19,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Repson
       return getEntriesDB(res)
     case 'POST': 
       return postEntryDB(req,res)
-    
     default:
       return res.status(400).json(
         {
-          message: "Please check the method, error path or method HTPP",
+          message: "Please check the method, error path or method HTTP",
           code: 400,
           error: 'Bad Request'
         });
